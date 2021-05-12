@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using RC.AutoMapper.Domains;
+using RC.AutoMapper.Request;
+using RC.AutoMapper.Response;
 
 namespace RC.AutoMapper
 {
@@ -7,7 +9,8 @@ namespace RC.AutoMapper
     {
         public SupplierProfile()
         {
-            CreateMap<ProductProfile, Product>().ReverseMap();
+            CreateMap<SupplierRequest, Supplier>().ReverseMap();
+            CreateMap<SupplierResponse, Supplier>().ReverseMap();
         }
     }
 }

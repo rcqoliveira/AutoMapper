@@ -7,9 +7,9 @@ namespace RC.AutoMapper.Domains
     {
         public int Id { get; set; }
         public string ProductName { get; set; }
-        public decimal Price { get; set; }
+        public double Price { get; set; }
         public DateTime Validity { get; set; }
-        public List<Product> Products { get; set; }
+        public List<Supplier> Suppliers { get; set; }
 
     }
 }
