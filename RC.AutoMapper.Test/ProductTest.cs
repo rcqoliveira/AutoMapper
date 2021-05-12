@@ -11,9 +11,8 @@ namespace RC.AutoMapper.Test
 {
     public class ProductTest
     {
-        private Product Product { get; set; }
+        private Product ProductDomains { get; set; }
         private ProductRequest ProductRequest { get; set; }
-        private ProductResponse ProductResponse { get; set; }
 
         [SetUp]
         public void Setup()
@@ -26,25 +25,25 @@ namespace RC.AutoMapper.Test
         [Test]
         public void ValidateDataFromRequestToDomains()
         {
-            var product = this.ProductRequest.MapTo(this.Product);
+            var product = this.ProductRequest.MapTo<ProductRequest, Product>();
 
-            Assert.AreEqual(product.Id, this.Product.Id);
-            Assert.AreEqual(product.Price, this.Product.Price);
-            Assert.AreEqual(product.Validity, this.Product.Validity);
-            Assert.AreEqual(product.ProductName, this.Product.ProductName);
-            Assert.AreEqual(product.Suppliers.Count(), this.Product.Suppliers.Count());
+            Assert.AreEqual(product.Id, this.ProductRequest.Id);
+            Assert.AreEqual(product.Price, this.ProductRequest.Price);
+            Assert.AreEqual(product.Validity, this.ProductRequest.Validity);
+            Assert.AreEqual(product.ProductName, this.ProductRequest.ProductName);
+            Assert.AreEqual(product.Suppliers.Count(), this.ProductRequest.Suppliers.Count());
         }
 
         [Test]
         public void ValidateDataFromDomainsToResponse()
         {
-            var productResponse = this.Product.MapTo(this.ProductResponse);
+            var productResponse = this.ProductDomains.MapTo<Product, ProductResponse>();
 
-            Assert.AreEqual(productResponse.Id, this.Product.Id);
-            Assert.AreEqual(productResponse.Price, this.Product.Price);
-            Assert.AreEqual(productResponse.Validity, this.Product.Validity);
-            Assert.AreEqual(productResponse.ProductName, this.Product.ProductName);
-            Assert.AreEqual(productResponse.Suppliers.Count(), this.Product.Suppliers.Count());
+            Assert.AreEqual(productResponse.Id, this.ProductDomains.Id);
+            Assert.AreEqual(productResponse.Price, this.ProductDomains.Price);
+            Assert.AreEqual(productResponse.Validity, this.ProductDomains.Validity);
+            Assert.AreEqual(productResponse.ProductName, this.ProductDomains.ProductName);
+            Assert.AreEqual(productResponse.Suppliers.Count(), this.ProductDomains.Suppliers.Count());
 
         }
 
@@ -85,7 +84,7 @@ namespace RC.AutoMapper.Test
                 }
             };
 
-            this.Product = new Product
+            this.ProductDomains = new Product
             {
                 Id = 2,
                 Price = 6.40,
